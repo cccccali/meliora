@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteRule   ^home$ index.php?page=home [NC]
+RewriteRule   ^upload$ index.php?page=upload [NC]
+RewriteRule   ^img/(.+)$   index.php?page=images&file=$1 [NC]
+RewriteRule   ^img$ index.php?page=images [NC]
+RewriteRule   ^albums$ index.php?page=albums [NC]
+RewriteRule   ^about$ index.php?page=about [NC]
+RewriteRule   ^register$ index.php?page=register [NC]
+RewriteRule   ^login$ index.php?page=login [NC]
+RewriteRule   ^update$ index.php?page=update [NC]
+RewriteRule   ^i/(.+)$ /includes/getImg.php?file=$1 [NC]
+RewriteRule   ^a/(.+)$ index.php?page=albums&file=$1 [NC]
+RewriteRule   ^selector$ index.php?page=selector [NC]
+RewriteRule   ^build-an-album$ index.php?page=build_album [NC]
+
+
+AddType text/css .css
+AddType text/javascript .js
