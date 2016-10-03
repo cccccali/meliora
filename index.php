@@ -15,14 +15,14 @@
 	</head>
 	<body>
 	<!-- <?php //include("modules/header.php"); ?> -->
-	<div class="main">
+	<div class="container-fluid">
 		<?php
-		if(isset($_GET['page'])){
-			include("pages/".$page_name.".php");
-		}
-		else{
-			include("pages/home.php");
-		}
+			if(isset($_GET['page'])){
+				include("pages/".$page_name.".php");
+			}
+			else{
+				include("pages/home.php");
+			}
 		?>
 		</div>
 	</body>
