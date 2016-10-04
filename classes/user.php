@@ -19,22 +19,16 @@ class user{
 			if(session::exists($this->_sessionName)){
 				$user = session::get($this->_sessionName);
 				
-				if($this->find($user)){
+				//if($this->find($user)){
 					$this->_isLoggedIn = true;
-				}
-				else{
-					$this->logout();
-				}
+				//}
+				//else{
+				//	$this->logout();
+				//}
 			}
 		}
 		else{
-			$this->find($user);
-		}
-	}
-
-	public function create($fields = array()){
-		if(!$this->_db->insert('users', $fields)){
-			throw new Exception('There was a problem creating an account.');
+			//$this->find($user);
 		}
 	}
 
@@ -57,46 +51,35 @@ class user{
 		}
 		else{
 
-			$user = $this->find($username);
+			//$user = $this->find($username);
 
-			if($user){
-				if($this->data()->password === hash::make($password, $this->data()->salt)){
+			//if($user){
+				//if($this->data()->password === hash::make($password, $this->data()->salt)){
 					session::put($this->_sessionName, $this->data()->id);
 
-					 if($remember){
-						 $hash = hash::unique();
-						 $hashCheck = $this->_db->get('user_session', array('user_id', '=', $this->data()->id));
+					// if($remember){
+					// 	$hash = hash::unique();
+					// 	$hashCheck = $this->_db->get('user_session', array('user_id', '=', $this->data()->id));
 					 
-						 if(!$hashCheck->count()){
-							 $this->_db->insert('user_session', array(
-								 'user_id' => $this->data()->id,
-								 'hash' => $hash
-							 ));
-						 }
-						 else{
-							 $hash = $hashCheck->first()->hash;
-						 }
+					// 	if(!$hashCheck->count()){
+					// 		$this->_db->insert('user_session', array(
+					// 			'user_id' => $this->data()->id,
+					// 			'hash' => $hash
+					// 		));
+					// 	}
+					// 	else{
+					// 		$hash = $hashCheck->first()->hash;
+					// 	}
 					 
-						 cookie::put($this->_cookieName, $hash, config::get('remember/cookie_expiry'));
+					// 	cookie::put($this->_cookieName, $hash, config::get('remember/cookie_expiry'));
 					 
-					 }
+					// }
 
 					return true;
-				}
-			}
+				//}
+			//}
 		}
 		return false;
-	}
-
-	public function update($fields = array(), $id = null){
-
-		if(!$id && $this->isLoggedIn()){
-			$id = $this->data()->id;
-		}
-
-		if(!$this->_db->update('users', $id,$fields)){
-			throw new Exception('There was a problem updating your information');
-		}
 	}
 
 	public function exists(){
@@ -105,7 +88,7 @@ class user{
 
 	public function logout(){
 		
-		$this->_db->delete('user_session', array('user_id', '=', $this->data()->id));
+		//$this->_db->delete('user_session', array('user_id', '=', $this->data()->id));
 
 		session::delete($this->_sessionName);
 		cookie::delete($this->_cookieName);

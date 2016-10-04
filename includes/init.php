@@ -19,10 +19,10 @@
 	);
 
 	spl_autoload_register(function($class){
-		require_once $_SERVER['DOCUMENT_ROOT'].'/classes/'.$class.'.php';
+		require_once '/classes/'.$class.'.php';
 	});
 
-	//require_once "/function/functions.php";
+	require_once "/includes/functions.php";
 	
 	$user;
 	if(cookie::exists(config::get('remember/cookie_name')) && !session::exists(config::get('session/session_name'))){
@@ -48,4 +48,5 @@
 	else{
 		$page_name = "home";
 	}
+
 ?>
