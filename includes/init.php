@@ -3,10 +3,10 @@
 
 	$GLOBALS['config'] = array(
 		'mysql' => array(
-			'host' => '',
-			'username' => '',
-			'password' => '',
-			'db' => ''
+			'host' => '143.95.253.78',
+			'username' => 'badmedia_better_registrar',
+			'password' => 'me1iora',
+			'db' => 'badmedia_registrar'
 		),
 		'remember' => array(
 			'cookie_name' => 'hash',
