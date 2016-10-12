@@ -3,8 +3,8 @@
 
 	$GLOBALS['config'] = array(
 		'mysql' => array(
-			'host' => '143.95.253.78',
-			'username' => 'badmedia_better_registrar',
+			'host' => 'dallas113.arvixeshared.com',
+			'username' => 'badmedia_reg',
 			'password' => 'me1iora',
 			'db' => 'badmedia_registrar'
 		),
@@ -19,10 +19,10 @@
 	);
 
 	spl_autoload_register(function($class){
-		require_once '/classes/'.$class.'.php';
+		require_once 'classes/'.$class.'.php';
 	});
 
-	require_once "/includes/functions.php";
+	require_once "includes/functions.php";
 	
 	$user;
 	if(cookie::exists(config::get('remember/cookie_name')) && !session::exists(config::get('session/session_name'))){
