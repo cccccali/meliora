@@ -3,8 +3,8 @@
 
 	$GLOBALS['config'] = array(
 		'mysql' => array(
-			'host' => 'dallas113.arvixeshared.com',
-			'username' => 'badmedia_reg',
+			'host' => '143.95.253.78',
+			'username' => 'badmedia_better_registrar',
 			'password' => 'me1iora',
 			'db' => 'badmedia_registrar'
 		),

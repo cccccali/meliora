@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> da34aa657b9bd6e177fc2fcfd049ea77497b7b0d
 <div class="row flex-items-xs-center">
 	<div class="col-lg-6 col-sm-9 col-xs-12">
 		<div class="jumbotron row flex-items-xs-center m-t-3">
