@@ -24,6 +24,7 @@
 			}
 			else{
 				include("pages/home.php");
+				echo($_GET['page']);
 			}
 		?>
 		</div>
