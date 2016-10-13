@@ -48,9 +48,6 @@
 ?>
 
 <script>
-	function validate() {
-
-	}
 	function register() {
 		swal({
 			title: "Register for an account",

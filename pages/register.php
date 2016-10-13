@@ -45,13 +45,10 @@ if (strlen($id) < 6 || strlen($pass) < 6) {
 
 $user = new user();
 
-$salt = hash::salt(32);
-
 try{
     $user->create(array(
         'student_id' => $id,
-        'password' => hash::make($pass, $salt),
-        'salt' => $salt
+        'password' => hash::make($pass)
     ));
     header('Content-Type: application/json');
     echo (json_encode(array('message' => 'success', 'code' => 1)));
