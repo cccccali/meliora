@@ -16,7 +16,7 @@
 		<script type="text/javascript" src="/scripts/sweetalert.js"></script>
 		<script type="text/javascript" src="/scripts/jquery.md5.js"></script>
 	</head>
-	<body>
+	<body <?php echo ($page_name === "login") ? "class='background'" : "" ?>> <!--Added by emily/kelly--> 
 		<?php include("modules/header.php"); ?>
 		<div class="container-fluid m-t-3">
 			<?php require_once("pages/".$page_name.".php"); ?>
