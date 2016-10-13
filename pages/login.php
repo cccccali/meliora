@@ -90,7 +90,7 @@
 			});
 	}
 </script>
-
+<body class="background"> <!--Added my emily/kelly--> 
 <div class="row flex-items-xs-center">
 	<div class="col-lg-6 col-sm-9 col-xs-12">
 		<div class="jumbotron row flex-items-xs-center m-t-3">
@@ -114,3 +114,4 @@
 		</div>
 	</div>
 </div>
+</body> 

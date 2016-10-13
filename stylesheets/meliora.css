@@ -1,3 +1,15 @@
 .fully {
 	height: 100%;
 }
+
+.background{
+  background-image: url("/images/background.jpg");
+  width: 100%;
+  min-height: auto;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  overflow: scroll;
+}
