@@ -3,8 +3,8 @@
 
 	$GLOBALS['config'] = array(
 		'mysql' => array(
-			'host' => '143.95.253.78',
-			'username' => 'badmedia_better_registrar',
+			'host' => 'dallas113.arvixeshared.com',
+			'username' => 'badmedia_reg',
 			'password' => 'me1iora',
 			'db' => 'badmedia_registrar'
 		),
@@ -42,8 +42,11 @@
 		$loggedin = true;
 	}
 
-	if(isset($_GET['page'])){
-  		$page_name = $_GET['page'];
+	$str = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$last = explode("/", $str)[1];
+
+	if(isset($last)){
+  		$page_name = $last;
 	}
 	else{
 		$page_name = "home";

@@ -14,7 +14,7 @@
         disableAutohide: false,
         showOnUpscroll: true,
         showOnBottom: false,
-        hideOffset: '300', // "auto" means the navbar height
+        hideOffset: "auto", // "auto" means the navbar height
         animationDuration: 200
       };
 
@@ -32,7 +32,7 @@
     }
 
     autoHidingNavbar.element.addClass('navbar-hidden').animate({
-      top: -autoHidingNavbar.element.height()
+      top: -autoHidingNavbar.element.height() - 50
     }, {
       queue: false,
       duration: autoHidingNavbar.settings.animationDuration
@@ -205,5 +205,5 @@
 })(jQuery, window, document);
 
 $(document).ready(function() {
-  $(document).autoHidingNavbar();
+  $(".navbar").autoHidingNavbar();
 });

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-faded navbar-fixed-top">
 	<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
 	&#9776;
 	</button>

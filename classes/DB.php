@@ -40,7 +40,7 @@ class DB{
 				$this->_count = $this->_query->rowCount();
 			}
 			else{
-				$this->_error = true;
+				$this->_error = $sql;
 			}
 		}
 		return $this;
@@ -90,7 +90,7 @@ class DB{
 			}
 
 			$sql = "INSERT INTO {$table} (`". implode('`, `',$keys) ."`) VALUES ({$values})";
-		   
+
 			if(!$this->query($sql, $fields)->error()){
 				return true;
 			}

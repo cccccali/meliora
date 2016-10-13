@@ -14,19 +14,12 @@
 		<script type="text/javascript" src="/scripts/bootstrap.js"></script>
 		<script type="text/javascript" src="/scripts/autohidingnavbar.js"></script>
 		<script type="text/javascript" src="/scripts/sweetalert.js"></script>
+		<script type="text/javascript" src="/scripts/jquery.md5.js"></script>
 	</head>
 	<body>
-	<?php include("modules/header.php"); ?>
-	<div class="container-fluid">
-		<?php
-			if(isset($_GET['page'])){
-				include("pages/".$page_name.".php");
-			}
-			else{
-				include("pages/home.php");
-				echo($_GET['page']);
-			}
-		?>
+		<?php include("modules/header.php"); ?>
+		<div class="container-fluid m-t-3">
+			<?php require_once("pages/".$page_name.".php"); ?>
 		</div>
 	</body>
 </html>
