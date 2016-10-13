@@ -66,14 +66,19 @@
 				var id = $("#registerID");
 				var pass = $("#registerPassword"); 
 				var token = $("#registerToken");
-				if (id.val() === false || id.val() === "")
+				if (id.val() === false || id.val() === ""){
 					swal.showInputError("Type your NetID please");
-				else if (id.val().length < 6)
+					return;
+				} else if (id.val().length < 6) {
 					 swal.showInputError("Invalid NetID");
-				else if (pass.val() === false || pass.val() === "") 
+					 return;
+				} else if (pass.val() === false || pass.val() === "") {
 					swal.showInputError("You need a password");
-				else if (pass.val().length < 6 )
+					return;
+				} else if (pass.val().length < 6 ) {
 					swal.showInputError("Your password must be more than 6 digits");
+					return;
+				}
 				$.ajax({ 
 					url: "/pages/register.php?id="+id.val()+"&pass="+pass.val()+'&token=<?php echo token::generate(); ?>',
 					dataType : 'json',
