@@ -14,9 +14,9 @@ class user{
         $this->_sessionName = config::get('session/session_name');
         $this->_cookieName = config::get('remember/cookie_name');
 
-
         if(!$user){
             if(session::exists($this->_sessionName)){
+
                 $user = session::get($this->_sessionName);
                 
                 if($this->find($user)){
@@ -40,7 +40,7 @@ class user{
 
     public function find($user = null){
         if($user){
-            $field = 'student_id';
+            $field = (strlen($user) > 5) ? 'student_id' : 'id'; //TODO , FIXME , this will break if there are ever more than 99000 account creations.
             $data = $this->_db->get('users', array($field, '=', $user));
 
             if($data->count()){
@@ -56,7 +56,7 @@ class user{
             session::put($this->_sessionName, $this->data()->id);
         }
         else{
-
+            
             $user = $this->find($username);
 
             if($user){
@@ -78,7 +78,6 @@ class user{
                          }
                      
                          cookie::put($this->_cookieName, $hash, config::get('remember/cookie_expiry'));
-                     
                      }
                     return true;
                 }

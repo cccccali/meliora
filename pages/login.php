@@ -18,6 +18,7 @@
 				$login = $user->login(input::get('inputID'), input::get('inputPassword'), $remember);
 
 				if($login){
+	                session::flash('home', 'You have successfully been logged in!');
 					redirect::to('home');
 				}
 				else{
@@ -30,8 +31,6 @@
 			}
 		}
 	}
-	echo input::get('inputID');
-	echo input::get('inputPassword');
 ?>
 
 <?php
@@ -53,8 +52,7 @@
 			title: "Register for an account",
 			text: '<p class="alert alert-warning">Demo purposes only, please dont use your real NetID/password!</p>'+
 					'<input id="registerID" type="text" name="registerID" class="form-control m-t-1" placeholder="NetID" required autofocus>'+
-					'<input id="registerPassword" type="password" name="registerPassword" class="form-control" placeholder="Password" required>'+
-					'<input id="registerToken" type="hidden" name="token" value="<?php echo token::generate(); ?>"/>',
+					'<input id="registerPassword" type="password" name="registerPassword" class="form-control" placeholder="Password" required>',
 			type: "info",
 			showCancelButton: true,
 			closeOnConfirm: false,
@@ -65,7 +63,6 @@
 			function(){
 				var id = $("#registerID");
 				var pass = $("#registerPassword"); 
-				var token = $("#registerToken");
 				if (id.val() === false || id.val() === ""){
 					swal.showInputError("Type your NetID please");
 					return;
@@ -80,7 +77,7 @@
 					return;
 				}
 				$.ajax({ 
-					url: "/pages/register.php?id="+id.val()+"&pass="+pass.val()+'&token=<?php echo token::generate(); ?>',
+					url: "/pages/register.php?id="+id.val()+"&pass="+pass.val(),
 					dataType : 'json',
 					timeout: 10000})
 					.done(function(Result) {
@@ -95,14 +92,14 @@
 			});
 	}
 </script>
-<div class="row flex-items-xs-center">
+<div class="row flex-items-xs-center m-x-1">
 	<div class="col-lg-6 col-sm-9 col-xs-12">
 		<div class="jumbotron row flex-items-xs-center m-t-3">
 			<div class="col-sm-10 col-xs-12">
 				<h1 class="text-xs-center display-4">Welcome to Better Registrar</h1>
 				<form action="" method="post">
-					<input type="text" name="inputID" class="form-control <?php $failedFlag ? 'form-control-danger' : '' ?>"" placeholder="NetID" required autofocus>
-					<input type="password" name="inputPassword" class="form-control <?php $failedFlag ? 'form-control-danger' : '' ?>" placeholder="Password" required>
+					<input type="text" name="inputID" class="form-control <?php echo($failedFlag ? 'form-control-danger' : '') ?>"" placeholder="NetID" required autofocus>
+					<input type="password" name="inputPassword" class="form-control <?php echo($failedFlag ? 'form-control-danger' : '') ?>" placeholder="Password" required>
 					<input type=hidden name=token value="<?php echo token::generate(); ?>"/>
 					<div class=" p-y-1">
 						<label class="custom-control custom-checkbox">
