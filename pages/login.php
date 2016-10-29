@@ -66,7 +66,7 @@
 				if (id.val() === false || id.val() === ""){
 					swal.showInputError("Type your NetID please");
 					return;
-				} else if (id.val().length < 6) {
+				} else if (id.val().length < 6 || (isNaN(parseFloat(id.val())) || !isFinite(id.val()))) {
 					 swal.showInputError("Invalid NetID");
 					 return;
 				} else if (pass.val() === false || pass.val() === "") {

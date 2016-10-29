@@ -1,5 +1,6 @@
 <?php
 	require_once "includes/init.php";
+	$user = new user();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +17,17 @@
 		<script type="text/javascript" src="/scripts/sweetalert.js"></script>
 		<script type="text/javascript" src="/scripts/jquery.md5.js"></script>
 	</head>
-	<body <?php echo ($page_name === "login") ? "class='background'" : "" ?>> <!--Added by emily/kelly--> 
+	<body <?php echo ($page_name === "login" || !$user->isLoggedIn()) ? "class='background'" : "" ?>> <!--Added by emily/kelly--> 
 		<?php include("modules/header.php"); ?>
 		<div class="container-fluid m-t-3">
-			<?php require_once("pages/".$page_name.".php"); ?>
+			<?php 
+				if(!$user->isLoggedIn()){
+    				require_once("pages/login.php"); 
+				} 
+				else {
+					require_once("pages/".$page_name.".php"); 
+				}
+			?>
 		</div>
 	</body>
 </html>
