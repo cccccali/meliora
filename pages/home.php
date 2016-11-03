@@ -8,12 +8,12 @@
 			<div class="row col-xs-12 m-t-1">
 				<div class="col-sm-6 col-xs-12 text-xs-center">
 					<a class="d-block" href="#">Update Address</a>
-					<a class="d-block" href="#">Personal Information</a>
+					<a class="d-block" href="personalInfo"= >Personal Information</a>
 					<a class="d-block" href="#">View Holds</a>
 				</div>
 				<div class="col-sm-6 col-xs-12 text-xs-center">
 					<a class="d-block" href="#">Course Registration</a>
-					<a class="d-block" href="#">View Schedules</a>
+					<a class="d-block" href="viewSchedule">View Schedules</a>
 				</div> 
 			</div>
 		</div>
