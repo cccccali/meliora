@@ -1,5 +1,5 @@
 
-    <div class="col-md-12">
+    <div class="col-md-12 homeLinks">
       <div class="row">
         <div class="col-md-5">
           <h1>View Schedule</h1>
