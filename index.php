@@ -16,6 +16,8 @@
 		<script type="text/javascript" src="/scripts/autohidingnavbar.js"></script>
 		<script type="text/javascript" src="/scripts/sweetalert.js"></script>
 		<script type="text/javascript" src="/scripts/jquery.md5.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  		<script src="http://iamrohit.in/lab/js/location.js"></script>
 	</head>
 	<body <?php echo ($page_name === "login" || !$user->isLoggedIn()) ? "class='background'" : "" ?>> <!--Added by emily/kelly--> 
 		<?php include("modules/header.php"); ?>
