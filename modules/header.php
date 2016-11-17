@@ -23,7 +23,7 @@
 						</div>
 					</li>
 					<li class="nav-item">
-						<button class="btn btn-primary" type="submit" onclick='location.href=<?php echo "\"".url("/pages/logout.php")."\""; ?>;'>Logout</button>
+						<button class="btn btn-primary" type="submit" onclick='location.href=<?php echo "\"".url("pages/logout.php")."\""; ?>;'>Logout</button>
 					</li>
 				</ul>
 				<?php

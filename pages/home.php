@@ -12,7 +12,7 @@
 					<a class="d-block" href="#">View Holds</a>
 				</div>
 				<div class="col-sm-6 col-xs-12 text-xs-center">
-					<a class="d-block" href="#">Course Registration</a>
+					<a class="d-block" href="<?php echo url("pages/registration.php"); ?>">Course Registration</a>
 					<a class="d-block" href="#">View Schedules</a>
 				</div> 
 			</div>

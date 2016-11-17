@@ -3,6 +3,7 @@ RewriteEngine On
 
 RewriteRule   ^home$ index.php?page=home [NC]
 RewriteRule   ^login$ index.php?page=login [NC]
+RewriteRule   ^registration$ index.php?page=registration
 
 AddType text/css .css
 AddType text/javascript .js
