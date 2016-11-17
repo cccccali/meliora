@@ -3,7 +3,7 @@
 	&#9776;
 	</button>
 	<div class="collapse navbar-toggleable-xs" id="navbar">
-		<a class="navbar-brand" href="#">Better Registrar</a>
+		<a class="navbar-brand" href="../home">Better Registrar</a>
 		<?php
 			if($loggedin){ ?>
 				<ul class="nav navbar-nav pull-xs-right">
@@ -11,8 +11,8 @@
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Your Account</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a class="dropdown-item" href="#">Update Address</a>
-							<a class="dropdown-item" href="#">Personal Information</a>
-							<a class="dropdown-item" href="#">View Holds</a>
+							<a class="dropdown-item" href="../personalInfo">Personal Information</a>
+							<a class="dropdown-item" href="../holds">View Holds</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
