@@ -1,6 +1,17 @@
 .fully {
 	height: 100%;
 }
+.homeLinks{
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+.personalInfo.solid {
+  border-style: solid;
+}
+.degreePadding {
+  padding-top: 20px; 
+  padding-bottom: 20px; 
+}
 
 html {
   min-height: 100%;
