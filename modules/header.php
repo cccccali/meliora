@@ -10,9 +10,15 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Your Account</a>
 						<div class="dropdown-menu dropdown-menu-right">
+<<<<<<< Updated upstream
 							<a class="dropdown-item" href="/updateAddress">Update Address</a>
 							<a class="dropdown-item" href="/personalInfo">Personal Information</a>
 							<a class="dropdown-item" href="/holds">View Holds</a>
+=======
+							<a class="dropdown-item" href="../UpdateAddress">Update Address</a>
+							<a class="dropdown-item" href="../personalInfo">Personal Information</a>
+							<a class="dropdown-item" href="../holds">View Holds</a>
+>>>>>>> Stashed changes
 						</div>
 					</li>
 					<li class="nav-item dropdown">
