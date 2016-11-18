@@ -31,5 +31,13 @@
 				}
 			?>
 		</div>
+	  	<footer> 
+	  	    <div class="col-md-12">
+      			<hr>
+    		</div>
+    		<div class="col-md-5">
+      			<p> &copy; Meliorats, CSC 210</p>
+    		</div> 
+  		</footer>
 	</body>
 </html>
