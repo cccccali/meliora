@@ -10,7 +10,7 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Your Account</a>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="#">Update Address</a>
+							<a class="dropdown-item" href="../UpdateAddress">Update Address</a>
 							<a class="dropdown-item" href="../personalInfo">Personal Information</a>
 							<a class="dropdown-item" href="../holds">View Holds</a>
 						</div>
@@ -19,7 +19,8 @@
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registration</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a class="dropdown-item" href="#">Course Registration</a>
-							<a class="dropdown-item" href="#">View Schedules</a>
+							<a class="dropdown-item" href="../viewSchedule">View Schedules</a>
+							<a class="dropdown-item" href="../search">Search</a>
 						</div>
 					</li>
 					<li class="nav-item">
