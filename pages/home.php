@@ -15,7 +15,7 @@
 					<a class="d-block" href="/register">Course Registration</a>
 					<a class="d-block" href="/viewSchedule">View Schedules</a>
 					<a class="d-block" href="/search">Search</a>
-				</div> 
+				</div>
 			</div>
 		</div>
 	</div>
