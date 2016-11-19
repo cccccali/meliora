@@ -55,6 +55,7 @@
   </div>
 </div>
 <script>
+//tooltip
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
   });
