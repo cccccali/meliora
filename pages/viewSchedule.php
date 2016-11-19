@@ -1,4 +1,4 @@
-<h1 class="p-t-2 m-l-1">View Schedule</h1>  
+<h1 class="p-t-2 m-l-1">View Schedule</h1>
 <div class="row">
   <div class="col-xl-6 col-lg-12 homeLinks">
   <div id="cal"></div>
