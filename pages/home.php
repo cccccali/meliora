@@ -7,15 +7,17 @@
 			<h1 class="text-xs-center display-4">Welcome, <?php echo($user->data()->student_id) ?></h1>
 			<div class="row col-xs-12 m-t-1">
 				<div class="col-sm-6 col-xs-12 text-xs-center">
-					<a class="d-block" href="#">Update Address</a>
-					<a class="d-block" href="personalInfo"= >Personal Information</a>
-					<a class="d-block" href="holds">View Holds</a>
+
+					<a class="d-block" href="/updateAddress">Update Address</a>
+					<a class="d-block" href="/personalInfo"= >Personal Information</a>
+					<a class="d-block" href="/holds">View Holds</a>
+
 				</div>
 				<div class="col-sm-6 col-xs-12 text-xs-center">
-					<a class="d-block" href="#">Course Registration</a>
-					<a class="d-block" href="viewSchedule">View Schedules</a>
-					<a class="d-block" href="search">Search</a>
-				</div> 
+					<a class="d-block" href="/register">Course Registration</a>
+					<a class="d-block" href="/viewSchedule">View Schedules</a>
+					<a class="d-block" href="/search">Search</a>
+				</div>
 			</div>
 		</div>
 	</div>

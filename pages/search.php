@@ -1,14 +1,13 @@
-
-    <div class="col-md-12 homeLinks">
-      <div class="row">
-        <div class="col-md-5">
-          <h1>Search</h1>
-        </div>
-      </div>
-      <form>
+<div class="col-md-12 homeLinks">
+  <div class="row">
+    <div class="col-md-5">
+      <h1>Search</h1>
+    </div>
+  </div>
+<form>
         <div class="form-group">
           <label for="formGroupExampleInput">Search</label>
-          <input type="text" class="form-control" id="form" placeholder="CSC 219">
+          <input type="text" class="form-control" id="form" placeholder="PSY">
         </div>
       </form> 
       <input type="button" id="searchButton" onclick="search()" value="Submit"/>  
@@ -48,7 +47,6 @@ function search() {
 	}
 }
 </script>
-
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
        
 
