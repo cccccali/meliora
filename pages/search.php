@@ -95,7 +95,7 @@ function search() {
 
   for (var i = 0; i < 20; i++) {
     $.ajax({
-      url: "apirequest.php",
+      url: "../classes/apirequest.php",
       data: {"string": encodeURIComponent(string), "index": i},
       type: "GET",
       context: document.body,
