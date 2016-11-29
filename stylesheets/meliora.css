@@ -26,3 +26,19 @@ html {
   background-size: cover;
   -o-background-size: cover;
 }
+
+
+#wrap {
+   width:1350px;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:625px;
+   margin-right: 50px;
+}
+#right_col {
+   float:right;
+   width:625px;
+   margin-left: 50px;
+}
