@@ -1,5 +1,5 @@
 <?php 
-	$url = "http://www.skedgeur.com/api/courses/?q=" . htmlspecialchars($_GET["string"]);
+	$url = "http://www.skedgeur.com/api/courses/?q=" . htmlspecialchars($_GET["string"], ENT_QUOTES, 'UTF-8');
 	$response = file_get_contents($url);
 	$array = json_decode($response, true);
 	
