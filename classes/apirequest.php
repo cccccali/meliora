@@ -9,7 +9,8 @@
 	$description = $array['20171'][$i]['description'];
 	$dept = $array['20171'][$i]['dept'];
 	$num = $array['20171'][$i]['num'];
-	$result = $title . ' – ' . $description . ' – ' . $dept . $num;
+	$result = array($title, $description, $dept, $num);
 
-	echo $result;
+	echo json_encode($result);
+
 ?>
