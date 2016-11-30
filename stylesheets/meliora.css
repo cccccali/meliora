@@ -29,16 +29,16 @@ html {
 
 
 #wrap {
-   width:1350px;
+   width:245%;
    margin:0 auto;
 }
 #left_col {
    float:left;
-   width:625px;
-   margin-right: 50px;
+   width:45%;
+   margin-right: 5%;
 }
 #right_col {
    float:right;
-   width:625px;
-   margin-left: 50px;
+   width:45%;
+   margin-left: 5%;
 }
