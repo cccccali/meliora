@@ -1,4 +1,38 @@
+<?php //one thing I noticed:  "name" attributes on input tags must be unique - for example you can't have 2 tags with a name = "street" on the same page
+if(input::exists()){ //here is where we process the submitted form, if it exists
+  $validate = new validate();
+  $validation = $validate->check($_POST, array( //we can validate data here
+    'city_test_please_change_this_name' => array(
+        'required' => true,
+        'min' => 2, //more examples, but you can mix and match these as needed per input
+        'max' => 20
+      ),
+  ));
+  if($validation->passed()){//horay!  
+    echo "validation passed!";
+    $fields = array();
+    $fields['mailing_city'] = input::get('city_test_please_change_this_name');
+    $test = DB::getInstance()->get("addresses", array('student_id', '=', "{$user->data()->id}")); //we need to see if this person already entered information
+    if ($test->count()) { // they have
+      echo "updating info";
+      //similat to below, but use -> set_data instead of ->insert
+    } else {//they have not
+      echo "inserting info";
+      DB::getInstance()->insert("addresses", $fields);  //'member to also submit the user id into the student_id field
+    }
+  } else {
+    echo "validation failed!";
+  }
+}
 
+$data = DB::getInstance()->get("addresses", array('student_id', '=', "{$user->data()->id}")); //here is where we load any prevously saved data from the database
+  if($data->count()){
+    $entry = $data->first(); //you can echo this members of this set anywhere on the page
+    echo "We have data here";  
+  } else {
+    echo "We have no data for this user"; 
+  }
+?>
 
 
 <div class="col-md-12 homeLinks">
@@ -26,7 +60,7 @@
         </div>
         <div class="form-group">
           <label for="city">City*</label>
-          <input type="text" class="form-control" name="city" value= "<?php echo ($user->data()->mailing_city)?>" placeholder="Rochester" required>
+          <input type="text" class="form-control" name="city_test_please_change_this_name" value= "<?php echo ($user->data()->mailing_city)?>" placeholder="Rochester" required>
           <label for="postal code">Postal Code*</label>
           <input type="text" class="form-control" name="postal code" value= "<?php echo ($user->data()->mailing_postal)?>" placeholder="14627" required>
         </div>
