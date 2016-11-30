@@ -74,8 +74,8 @@
         </div>
 
         <div class="form-group">
-          <label for = "country1">Country</label>
-          <select name="country1" class="countries" id="countryId">
+          <label for = "country">Country</label>
+          <select name="country" class="countries" id="countryId">
             <option value="">Select Country</option>
           </select>
         </div>
