@@ -31,7 +31,7 @@
     <form>
         <div class="form-group">
           <label for="formGroupExampleInput">Search</label>
-          <input type="text" class="form-control" id="form" placeholder="PSY">
+          <input type="text" class="form-control" id="form" placeholder="CSC 173">
         </div>
       </form> 
       <input type="button" id="searchButton" onclick="search()" value="Submit"/> 
