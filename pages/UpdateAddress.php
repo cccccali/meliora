@@ -57,11 +57,11 @@
 
    ));
    if($validation->passed()){//horay!  
-     echo "validation passed!";
+     #echo "validation passed!";
      $fields = array();
 
      $fields['student_id'] = $user->data()->student_id;
-     echo $fields['student_id'];
+     #echo $fields['student_id'];
      $fields['mailing_street1'] = input::get('mailing_street1');
      $fields['mailing_street2'] = input::get('mailing_street2');
      $fields['mailing_city'] = input::get('mailing_city');
@@ -127,16 +127,16 @@
    
      $test = DB::getInstance()->get("addresses", array('student_id', '=', "{$user->data()->student_id}")); //we need to see if this person already entered information
      if ($test->count()) { // they have
-       echo "updating info";
-       //DB::getInstance()->set_data("addresses", $fields);  
+       #echo "updating info";
+       DB::getInstance()->update("addresses", "{$user->data()->student_id}", "student_id", $fields);  
        //similar to below, but use -> set_data instead of ->insert
      } else {//they have not
-       echo "inserting info";
-       echo $fields['student_id'];
+       #echo "inserting info";
+       #echo $fields['student_id'];
        DB::getInstance()->insert("addresses", $fields);  //'member to also submit the user id into the student_id field
      }
    } else {
-     echo "validation failed!";
+     #echo "validation failed!";
    }
  }
  
@@ -145,9 +145,9 @@
     #what does this mean? count of the array?
      $entry = $data->first(); //you can echo this member of this set anywhere on the page
      #$entry->data()->mailing_street1 something like this????
-     echo "We have data here";  
+     #echo "We have data here";  
    } else {
-     echo "We have no data for this user"; 
+     #echo "We have no data for this user"; 
    }
  ?>
   
@@ -158,7 +158,6 @@
 <div class="col-md-12 homeLinks">
   <div class="row">
     <div class="col-md-5">
-
       <h1>Update Address</h1>
       <ul>
         <li>Fields marked with  *  must be filled in before submitting form. </li>
@@ -381,8 +380,8 @@
 
           </select>
         </div>
-        
         <div>
+
           <label for="email">Email*</label>
           <input type="email" class="form-control" name="emergency_email" value= "<?php echo $entry->emergency_email?>"  placeholder="jane@u.rochester.edu" required>
         </div>
