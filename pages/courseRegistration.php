@@ -55,6 +55,18 @@
 </script>
 
 <script type="text/javascript">
+function register() {
+  console.log("Register pressed");
+  $.ajax({
+      url: "../classes/addCourse.php",
+      data: {"crn": "49698"},
+      type: "POST",
+      context: document.body,
+      success: function( result ) {
+        console.log(result);
+  }});
+}
+
 function search() { 
   var node = document.getElementById("results");
   while (node.hasChildNodes()) {
@@ -70,10 +82,7 @@ function search() {
       type: "GET",
       context: document.body,
       success: function( result ) {
-        var data_array = $.parseJSON(result);
-
-        console.log(data_array[4]);
-          
+        var data_array = $.parseJSON(result);          
         if (data_array[0] != null) {
           var trNode = document.createElement("tr");
           var tdNode = document.createElement("td");
@@ -99,6 +108,7 @@ function search() {
 
           var tdNode = document.createElement("td");
           var btn = document.createElement("BUTTON");
+          btn.onclick = function() { register(); };
           var t = document.createTextNode("Add Course");
           btn.appendChild(t);
           tdNode.appendChild(btn);
