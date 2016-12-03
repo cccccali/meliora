@@ -14,9 +14,8 @@
 
 				</div>
 				<div class="col-sm-6 col-xs-12 text-xs-center">
-					<a class="d-block" href="/search">Course Registration</a>
+					<a class="d-block" href="/courseRegistration">Course Registration</a>
 					<a class="d-block" href="/viewSchedule">View Schedules</a>
-					<!--a class="d-block" href="/search">Search</a-->
 				</div>
 			</div>
 		</div>

@@ -18,7 +18,7 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registration</a>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="/search">Course Registration</a>
+							<a class="dropdown-item" href="/courseRegistration">Course Registration</a>
 							<a class="dropdown-item" href="/viewSchedule">View Schedules</a>
 							<!--a class="dropdown-item" href="/search">Search</a-->
 						</div>
