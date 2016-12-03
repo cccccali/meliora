@@ -187,17 +187,24 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="mailing_country" class="countries" id="countryId">
-            <option value= "<?php echo $entry->mailing_country?>" >Select Country</option>
+          <select name="mailing_country" id="mailing_country" >
+
           </select>
+ 
+        <script language = "javascript">
+          populateCountries("mailing_country", "mailing_state");
+        </script>
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="mailing_state" class="states" id="stateId">
+          <select name="mailing_state" id="mailing_state">
             <option value= "<?php echo $entry->mailing_state?>" >Select State</option>
           </select>
         </div>
+
+   
+
 
         <div class="form-group">
           <label for="email">Email*</label>
@@ -229,21 +236,34 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="residential_country" class="countries" id="countryId">
-            <option value="">Select Country</option>
+          <select name="residential_country" id="residential_country">
+            
           </select>
+        <script language = "javascript">
+          populateCountries("residential_country", "residential_state");
+        </script>
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="residential_state" class="states" id="stateId">
-            <option value="">Select State</option>
+          <select name="residential_state" id="residential_state">
+            <option value= "<?php echo $entry->residential_state?>" >Select State</option>
           </select>
         </div>
+
+
+
+
         <div class="form-group">
           <label for="tel">Preferred Phone*</label>
           <input type="tel" class="form-control" name="residential_phone" value= "<?php echo $entry->residential_phone?>" placeholder="(###) ###-####" required>
         </div>
+
+<!-- 
+        <div>
+          <input type = "checkbox" name = "mailing2permanent" value = true> Check here if your permanent address is the same as mailing address.<br>
+        </div>
+ -->
         <h2> Permanent Address</h2>
         <div class="form-group">
           <label for="street">Street1</label>
@@ -262,17 +282,21 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="permanent_country" class="countries" id="countryId">
-            <option value="">Select Country</option>
+          <select name="permanent_country" id="permanent_country">
+            
           </select>
+        <script language = "javascript">
+          populateCountries("permanent_country", "permanent_state");
+        </script>
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="permanent_state" class="states" id="stateId">
-            <option value="">Select State</option>
+          <select name="permanent_state" id="permanent_state">
+            <option value= "<?php echo $entry->permanent_state?>" >Select State</option>
           </select>
         </div>
+
 
         <div class="form-group">
           <label for="tel">Phone</label>
@@ -296,15 +320,18 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="billing_country" class="countries" id="countryId">
-            <option value="">Select Country</option>
+          <select name="billing_country" id="billing_country">
+            
           </select>
+        <script language = "javascript">
+          populateCountries("billing_country", "billing_state");
+        </script>
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="billing_state" class="states" id="stateId">
-            <option value="">Select State</option>
+          <select name="billing_state" id="billing_state">
+            <option value= "<?php echo $entry->billing_state?>" >Select State</option>
           </select>
         </div>
 
@@ -336,15 +363,18 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="foreign_country" class="countries" id="countryId">
-            <option value="">Select Country</option>
+          <select name="foreign_country" id="foreign_country">
+            
           </select>
+        <script language = "javascript">
+          populateCountries("foreign_country", "foreign_state");
+        </script>
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="foreign_state" class="states" id="stateId">
-            <option value="">Select State</option>
+          <select name="foreign_state" id="foreign_state">
+            <option value= "<?php echo $entry->foreign_state?>" >Select State</option>
           </select>
         </div>
 
