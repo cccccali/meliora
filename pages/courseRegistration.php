@@ -1,28 +1,4 @@
-<!-- <div class="col-md-12 homeLinks">
-  <div class="row">
-    <div class="col-md-5">
-      <h1>Search</h1>
-    </div>
-  </div>
-<form>
-        <div class="form-group">
-          <label for="formGroupExampleInput">Search</label>
-          <input type="text" class="form-control" id="form" placeholder="PSY">
-        </div>
-      </form> 
-      <input type="button" id="searchButton" onclick="search()" value="Submit"/>  
-      <div class="container">
-        <div id="results" class="row">
-        </div>
-      </div> 
-      <footer> 
-        <div class="col-md-5">
-          <p> &copy; Meliorats, CSC 210</p>
-        </div>
-      </footer>
-    </div>  -->
-
-<h1 class="p-t-2 m-l-1">Search</h1>
+<h1 class="p-t-2 m-l-1">Register & Search</h1>
 <div class="row">
   <div class="col-xl-6 col-lg-12">
   <div id="cal"></div>
@@ -54,14 +30,6 @@
 </div>
 
 <script type="text/javascript">
-  /*
-  *
-  * STANDARD EVENT ARRAY - ONE ARRAY WHICH CONTAINS INDIVIDUAL EVENT ARRAYS
-  * INDIVIDUAL EVENTS ARRAYS CONTAIN STRINGS W/ THE FOLLOWING:
-  * [dayOfWeek, standardTime, eventTitle, backgroundColor]
-  *
-  */
-
   var events = [];
   events[0] = [];
   events[0][0] = "Tuesday";
