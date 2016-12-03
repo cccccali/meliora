@@ -73,10 +73,10 @@
   var events = [];
   events[0] = [];
   events[0][0] = "Wednesday";
-  events[0][1] = "3:00pm";
+  events[0][1] = "1700";
   events[0][2] = "CSC170";
   events[0][3] = "orange";
-  events[0][4] = "5:30pm";
+  events[0][4] = "1730";
   events[0][5] = "CSB101";
   events[1] = [];
   events[1][0] = "Monday";
