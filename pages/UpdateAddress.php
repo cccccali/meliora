@@ -158,6 +158,7 @@
 <div class="col-md-12 homeLinks">
   <div class="row">
     <div class="col-md-5">
+
       <h1>Update Address</h1>
       <ul>
         <li>Fields marked with  *  must be filled in before submitting form. </li>
@@ -380,8 +381,8 @@
 
           </select>
         </div>
+        
         <div>
-
           <label for="email">Email*</label>
           <input type="email" class="form-control" name="emergency_email" value= "<?php echo $entry->emergency_email?>"  placeholder="jane@u.rochester.edu" required>
         </div>
