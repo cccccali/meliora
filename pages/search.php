@@ -43,6 +43,7 @@
           <th>Department</th>
           <th>Course ID</th>
           <th>Time</th>
+          <th>Add Course</th>
         </tr>
       </thead>
       <tbody id="results">
@@ -127,7 +128,16 @@ function search() {
           var textnode = document.createTextNode(data_array[4]);
           tdNode.appendChild(textnode);
           trNode.appendChild(tdNode);
+
+          var tdNode = document.createElement("td");
+          var btn = document.createElement("BUTTON");
+          var t = document.createTextNode("Add Course");
+          btn.appendChild(t);
+          tdNode.appendChild(btn);
+          trNode.appendChild(tdNode);
+
           document.getElementById("results").appendChild(trNode);
+
         }
       }
     })
