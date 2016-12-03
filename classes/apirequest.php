@@ -8,7 +8,12 @@
 	$description = $array['20171'][$i]['description'];
 	$dept = $array['20171'][$i]['dept'];
 	$num = $array['20171'][$i]['num'];
-	$days = $array['20171'][$i]['sections'][0]['days'] . " " .  $array['20171'][$i]['sections'][0]['prettyTime'];
-	$result = array($title, $description, $dept, $num, $days);
+	$sections = "";
+
+	foreach ($array['20171'][$i]['sections'] as $section) {
+		$sections = $sections . $section['days'] . " " .  $section['prettyTime'] . "\n";
+	}
+
+	$result = array($title, $description, $dept, $num, $sections);
 	echo json_encode($result);
 ?>
