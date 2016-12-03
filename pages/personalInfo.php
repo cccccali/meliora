@@ -1,4 +1,3 @@
-
  <?php 
  
   $dataStudent= DB::getInstance()->get("personal_info", array('student_id', '=', "{$user->data()->student_id}")); //here is where we load any previously saved data from the database
@@ -12,9 +11,7 @@
 
   $dataMajor= DB::getInstance()->get("degree_programs", array('student_id', '=', "{$user->data()->student_id}")); //here is where we load any previously saved data from the database
    if($dataMajor->count()){
-    #what does this mean? count of the array?
-     $studentMajor = $dataMajor->first(); //you can echo this member of this set anywhere on the page
-    
+     $studentMajor = $dataMajor->first(); //you can echo this member of this set anywhere on the page 
    } else {
      #echo "We have no data for this user"; 
    }
