@@ -69,6 +69,13 @@ class DB{
 		return $this->action('SELECT *', $table, $where);
 	}
 
+	private function modGet($table, $where) {
+		$sql = "SELECT * FROM {$table} WHERE " . $where;
+		// if(!$this->query($sql, array($value))->error()){
+		// 	return $this;
+		// }	
+	}
+
 	public function delete($table, $where){
 		return $this->action('DELETE', $table, $where);
 	}
