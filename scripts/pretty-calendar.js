@@ -20,7 +20,7 @@ function PrettyCalendar(events, divToPut, navigation, customLabels) {
     if (navigation) {
         PrettyCalendar.addNavigation();
     }
-    this.initTransitions();
+    //this.initTransitions();
     PrettyCalendar.commitEvents(events);
 }
 
@@ -51,9 +51,8 @@ PrettyCalendar.arrangeInDays = function (events) {
         eventsToday[dayToArrange][tempIndex][0] = events[i][1];
         eventsToday[dayToArrange][tempIndex][1] = events[i][2];
         eventsToday[dayToArrange][tempIndex][2] = events[i][3];
-        if (events[i].length > 4) {
-            eventsToday[dayToArrange][tempIndex][3] = events[i][4];
-        }
+        eventsToday[dayToArrange][tempIndex][3] = events[i][4];
+        eventsToday[dayToArrange][tempIndex][4] = events[i][5];
     }
     return eventsToday;
 }
@@ -103,14 +102,15 @@ PrettyCalendar.prototype.genCalendar = function (customLabels) {
 }
 
 PrettyCalendar.timeToHours = function (formatted) {
-    var timeHours = 0;
-    var timeWithLabel = formatted;
-    if (timeWithLabel.replace("pm", "") != timeWithLabel) timeHours += 12;
-    var twoPieces = timeWithLabel.split(":");
-    if (twoPieces[0] == "12") timeHours -= 12;
-    timeHours = Number(timeHours) + Number(twoPieces[0]);
-    timeHours = Number(timeHours) + Number(twoPieces[1].replace("am", "").replace("pm", "")) / 60;
-    return timeHours;
+    //var timeHours = 0;
+    //var timeWithLabel = formatted;
+    //if (timeWithLabel.replace("pm", "") != timeWithLabel) timeHours += 12;
+    //var twoPieces = timeWithLabel.split(":");
+    //if (twoPieces[0] == "12") timeHours -= 12;
+    //timeHours = Number(timeHours) + Number(twoPieces[0]);
+    //timeHours = Number(timeHours) + Number(twoPieces[1].replace("am", "").replace("pm", "")) / 60;
+    //return timeHours;
+    return formatted;
 }
 
 PrettyCalendar.hoursToPercent = function (hours) {
@@ -143,9 +143,7 @@ PrettyCalendar.populateEvents = function (eventsToday) {
             $(eventTempDiv).attr("class", "event");
             $(eventTempDiv).attr("id", "event" + (counterTemp));
             var heightSet = "height:auto;";
-            if (eventsToday[j][i].length > 3) {
-                heightSet = "height:" + (PrettyCalendar.hoursToPercent(PrettyCalendar.timeToHours(eventsToday[j][i][3])) - percentTemp) + "%;";
-            }
+            heightSet = "height:" + (PrettyCalendar.hoursToPercent(PrettyCalendar.timeToHours(eventsToday[j][i][3])) - percentTemp) + "%;";
             $(eventTempDiv).attr("style", "top:" + percentTemp + "%;width:" + formatWidth + "%;background-color:" + eventsToday[j][i][2] + ";left:" + (100 - formatWidth) + "%;" + heightSet);
             if (formatWidth != 100) {
                 for (var x = 0; x < numToCompress - 1; x++) {
@@ -156,6 +154,8 @@ PrettyCalendar.populateEvents = function (eventsToday) {
                 $(eventTempDiv).attr("title", eventsToday[j][i][1]);
             }
             $(eventTempDiv).text(eventsToday[j][i][1]);
+            $(eventTempDiv).append("</br>");
+            $(eventTempDiv).append(eventsToday[j][i][4]);
             $("#day" + (j + 1)).append(eventTempDiv);
         }
     }
@@ -166,45 +166,45 @@ PrettyCalendar.updateEvents = function (events) {
     PrettyCalendar.commitEvents(events);
 }
 
-PrettyCalendar.prototype.initTransitions = function () {
-    var tempCal = this;
-    $(".day").click(function () {
-        if (!tempCal.transition) {
-            if (tempCal.weekView) {
-                tempCal.transition = true;
-                tempCal.weekView = false;
-                $("#day5").not(this).css("width", "13%");
-                $("#day1").not(this).css("width", "13%");
-                $(".day").not(this).css("min-width", "0px");
-                $(".day").not(this).animate({
-                    width: "0%",
-                }, 1000, function () {
-                    $(".day").not(this).css("display", "none");
-                });
-                $(this).animate({
-                    width: "100%",
-                }, 1000, function () {
-                    $(this).css("display", "block");
-                    tempCal.transition = false;
-                });
-            } else {
-                tempCal.transition = true;
-                $(".day").css("display", "block");
-                tempCal.weekView = true;
-                $(".day").not(this).animate({
-                    width: "20%",
-                }, 1000, function () {
-                    $(".day").css("min-width", "50px");
-                    tempCal.transition = false;
-                });
-                $(this).animate({
-                    width: "14.28%",
-                }, 970);
+// PrettyCalendar.prototype.initTransitions = function () {
+//     var tempCal = this;
+//     $(".day").click(function () {
+//         if (!tempCal.transition) {
+//             if (tempCal.weekView) {
+//                 tempCal.transition = true;
+//                 tempCal.weekView = false;
+//                 $("#day5").not(this).css("width", "13%");
+//                 $("#day1").not(this).css("width", "13%");
+//                 $(".day").not(this).css("min-width", "0px");
+//                 $(".day").not(this).animate({
+//                     width: "0%",
+//                 }, 1000, function () {
+//                     $(".day").not(this).css("display", "none");
+//                 });
+//                 $(this).animate({
+//                     width: "100%",
+//                 }, 1000, function () {
+//                     $(this).css("display", "block");
+//                     tempCal.transition = false;
+//                 });
+//             } else {
+//                 tempCal.transition = true;
+//                 $(".day").css("display", "block");
+//                 tempCal.weekView = true;
+//                 $(".day").not(this).animate({
+//                     width: "20%",
+//                 }, 1000, function () {
+//                     $(".day").css("min-width", "50px");
+//                     tempCal.transition = false;
+//                 });
+//                 $(this).animate({
+//                     width: "14.28%",
+//                 }, 970);
 
-            }
-        }
-    });
-}
+//             }
+//         }
+//     });
+// }
 
 PrettyCalendar.prototype.addFooter = function (footerContents) {
     var footer = document.createElement("footer");

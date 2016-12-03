@@ -7,6 +7,7 @@ RewriteRule   ^registration$ index.php?page=registration
 RewriteRule   ^updateAddress$ index.php?page=updateAddress
 RewriteRule   ^personalInfo$ index.php?page=personalInfo
 RewriteRule   ^viewSchedule$ index.php?page=viewSchedule
-
+RewriteRule   ^holds$ index.php?page=holds
+RewriteRule   ^search$ index.php?page=search
 AddType text/css .css
 AddType text/javascript .js

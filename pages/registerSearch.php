@@ -1,36 +1,13 @@
-<!-- <div class="col-md-12 homeLinks">
-  <div class="row">
-    <div class="col-md-5">
-      <h1>Search</h1>
-    </div>
-  </div>
-<form>
-        <div class="form-group">
-          <label for="formGroupExampleInput">Search</label>
-          <input type="text" class="form-control" id="form" placeholder="PSY">
-        </div>
-      </form> 
-      <input type="button" id="searchButton" onclick="search()" value="Submit"/>  
-      <div class="container">
-        <div id="results" class="row">
-        </div>
-      </div> 
-      <footer> 
-        <div class="col-md-5">
-          <p> &copy; Meliorats, CSC 210</p>
-        </div>
-      </footer>
-    </div>  -->
-
 <h1 class="p-t-2 m-l-1">Search</h1>
 <div class="row">
-  <div class="col-xl-6 col-lg-12">
+  <div class="col-xl-6 col-lg-12 homeLinks">
   <div id="cal"></div>
-  </div>
-  <div class="col-xl-6 col-lg-12">
+  </div> 
+
+  <div class="col-xl-6 col-lg-12 homeLinks">
     <form>
         <div class="form-group">
-          <label for="formGroupExampleInput">Search</label>
+        <label for="formGroupExampleInput">Search</label>
           <input type="text" class="form-control" id="form" placeholder="PSY">
         </div>
       </form> 
@@ -52,44 +29,11 @@
 </div>
 
 <script type="text/javascript">
-  /*
-  *
-  * STANDARD EVENT ARRAY - ONE ARRAY WHICH CONTAINS INDIVIDUAL EVENT ARRAYS
-  * INDIVIDUAL EVENTS ARRAYS CONTAIN STRINGS W/ THE FOLLOWING:
-  * [dayOfWeek, standardTime, eventTitle, backgroundColor]
-  *
-  */
-
-  var events = [];
-  // events[0] = [];
-  // events[0][0] = "Tuesday";
-  // events[0][1] = "3:00pm";
-  // events[0][2] = "Just a sample event"
-  // events[0][3] = "#c0c0c0";
-  // events[1] = [];
-  // events[1][0] = "Monday";
-  // events[1][1] = "12:00pm";
-  // events[1][2] = "Another event"
-  // events[1][3] = "#8FD8D8";
-  // events[2] = [];
-  // events[2][0] = "Thursday";
-  // events[2][1] = "5:00pm";
-  // events[2][2] = "This is what happens when"
-  // events[2][3] = "orange";
-  // events[3] = [];
-  // events[3][0] = "Thursday";
-  // events[3][1] = "5:30pm";
-  // events[3][2] = "two events are side by side"
-  // events[3][3] = "purple";
-  var prettyCal = new PrettyCalendar(events, "cal", false);
-</script>
-
-<script type="text/javascript">
 function search() { 
   var node = document.getElementById("results");
   while (node.hasChildNodes()) {
     node.removeChild(node.lastChild);
-  }
+}
   var queryString = document.getElementById("form").value;
   var string = document.getElementById("form").value;
 
@@ -100,11 +44,7 @@ function search() {
       type: "GET",
       context: document.body,
       success: function( result ) {
-        var data_array = $.parseJSON(result);
-
-        console.log(data_array[0]);
-          
-        if (data_array[0] != null) {
+          var data_array = $.parseJSON(result);
           var trNode = document.createElement("tr");
           var tdNode = document.createElement("td");
           var textnode = document.createTextNode(data_array[0]);
@@ -124,10 +64,44 @@ function search() {
           trNode.appendChild(tdNode);
           document.getElementById("results").appendChild(trNode);
         }
-      }
     })
   }
 }
 </script>
+
+<script>
+
+  /*
+  *
+  * STANDARD EVENT ARRAY - ONE ARRAY WHICH CONTAINS INDIVIDUAL EVENT ARRAYS
+  * INDIVIDUAL EVENTS ARRAYS CONTAIN STRINGS W/ THE FOLLOWING:
+  * [dayOfWeek, standardTime, eventTitle, backgroundColor]
+  *
+  */
+
+  var events = [];
+  events[0] = [];
+  events[0][0] = "Wednesday";
+  events[0][1] = "3:00pm";
+  events[0][2] = "CSC170";
+  events[0][3] = "orange";
+  events[0][4] = "5:30pm";
+  events[0][5] = "CSB101";
+  events[1] = [];
+  events[1][0] = "Monday";
+  events[1][1] = "3:00pm";
+  events[1][2] = "CSC170";
+  events[1][3] = "orange";
+  events[1][4] = "5:30pm";
+  events[1][5] = "CSB101";
+  events[2] = [];
+  events[2][0] = "Friday";
+  events[2][1] = "3:00pm";
+  events[2][2] = "CSC170";
+  events[2][3] = "orange";
+  events[2][4] = "5:30pm";
+  events[2][5] = "CSB101";
+  var prettyCal = new PrettyCalendar(events, "cal", false);
+</script>
+
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-      
