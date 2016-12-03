@@ -8,6 +8,7 @@
 	$description = $array['20171'][$i]['description'];
 	$dept = $array['20171'][$i]['dept'];
 	$num = $array['20171'][$i]['num'];
-	$result = array($title, $description, $dept, $num);
+	$days = $array['20171'][$i]['sections'][0]['days'] . " " .  $array['20171'][$i]['sections'][0]['prettyTime'];
+	$result = array($title, $description, $dept, $num, $days);
 	echo json_encode($result);
 ?>

@@ -42,6 +42,7 @@
           <th>Description</th>
           <th>Department</th>
           <th>Course ID</th>
+          <th>Time</th>
         </tr>
       </thead>
       <tbody id="results">
@@ -61,26 +62,26 @@
   */
 
   var events = [];
-  // events[0] = [];
-  // events[0][0] = "Tuesday";
-  // events[0][1] = "3:00pm";
-  // events[0][2] = "Just a sample event"
-  // events[0][3] = "#c0c0c0";
-  // events[1] = [];
-  // events[1][0] = "Monday";
-  // events[1][1] = "12:00pm";
-  // events[1][2] = "Another event"
-  // events[1][3] = "#8FD8D8";
-  // events[2] = [];
-  // events[2][0] = "Thursday";
-  // events[2][1] = "5:00pm";
-  // events[2][2] = "This is what happens when"
-  // events[2][3] = "orange";
-  // events[3] = [];
-  // events[3][0] = "Thursday";
-  // events[3][1] = "5:30pm";
-  // events[3][2] = "two events are side by side"
-  // events[3][3] = "purple";
+  events[0] = [];
+  events[0][0] = "Tuesday";
+  events[0][1] = "3:00pm";
+  events[0][2] = "Just a sample event"
+  events[0][3] = "#c0c0c0";
+  events[1] = [];
+  events[1][0] = "Monday";
+  events[1][1] = "12:00pm";
+  events[1][2] = "Another event"
+  events[1][3] = "#8FD8D8";
+  events[2] = [];
+  events[2][0] = "Thursday";
+  events[2][1] = "5:00pm";
+  events[2][2] = "This is what happens when"
+  events[2][3] = "orange";
+  events[3] = [];
+  events[3][0] = "Thursday";
+  events[3][1] = "5:30pm";
+  events[3][2] = "two events are side by side"
+  events[3][3] = "purple";
   var prettyCal = new PrettyCalendar(events, "cal", false);
 </script>
 
@@ -102,7 +103,7 @@ function search() {
       success: function( result ) {
         var data_array = $.parseJSON(result);
 
-        console.log(data_array[0]);
+        console.log(data_array[4]);
           
         if (data_array[0] != null) {
           var trNode = document.createElement("tr");
@@ -120,6 +121,10 @@ function search() {
           trNode.appendChild(tdNode);
           var tdNode = document.createElement("td");
           var textnode = document.createTextNode(data_array[3]);
+          tdNode.appendChild(textnode);
+          trNode.appendChild(tdNode);
+          var tdNode = document.createElement("td");
+          var textnode = document.createTextNode(data_array[4]);
           tdNode.appendChild(textnode);
           trNode.appendChild(tdNode);
           document.getElementById("results").appendChild(trNode);
