@@ -102,15 +102,16 @@ PrettyCalendar.prototype.genCalendar = function (customLabels) {
 }
 
 PrettyCalendar.timeToHours = function (formatted) {
-    //var timeHours = 0;
-    //var timeWithLabel = formatted;
-    //if (timeWithLabel.replace("pm", "") != timeWithLabel) timeHours += 12;
-    //var twoPieces = timeWithLabel.split(":");
-    //if (twoPieces[0] == "12") timeHours -= 12;
-    //timeHours = Number(timeHours) + Number(twoPieces[0]);
-    //timeHours = Number(timeHours) + Number(twoPieces[1].replace("am", "").replace("pm", "")) / 60;
-    //return timeHours;
-    return formatted;
+    // var timeHours = 0;
+    // var timeWithLabel = formatted;
+    // if (timeWithLabel.replace("pm", "") != timeWithLabel) timeHours += 12;
+    // var twoPieces = timeWithLabel.split(":");
+    // if (twoPieces[0] == "12") timeHours -= 12;
+    // timeHours = Number(timeHours) + Number(twoPieces[0]);
+    // timeHours = Number(timeHours) + Number(twoPieces[1].replace("am", "").replace("pm", "")) / 60;
+    // console.log(timeHours);
+    // return timeHours;
+    return formatted/100;
 }
 
 PrettyCalendar.hoursToPercent = function (hours) {
