@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Registrar - <?php echo ucfirst($page_name); ?></title>
+		<title>Registrar - <?php echo($page_name); ?></title>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/sweetalert.css"/>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/meliora.css"/>

@@ -18,7 +18,7 @@
 				$login = $user->login(input::get('inputID'), input::get('inputPassword'), $remember);
 
 				if($login){
-	                session::flash('home', 'You have successfully been logged in!');
+	                //session::flash('home', 'You have successfully been logged in!');
 					redirect::to('home');
 				}
 				else{
