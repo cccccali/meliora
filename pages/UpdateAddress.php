@@ -141,15 +141,15 @@
  }
  
  $data = DB::getInstance()->get("addresses", array('student_id', '=', "{$user->data()->student_id}")); //here is where we load any previously saved data from the database
-   if($data->count()){
-    #what does this mean? count of the array?
-     $entry = $data->first(); //you can echo this member of this set anywhere on the page
-     #$entry->data()->mailing_street1 something like this????
-     #echo "We have data here";  
-   } else {
-     #echo "We have no data for this user"; 
-   }
- ?>
+ if($data->count()){
+  #what does this mean? count of the array?
+   $entry = $data->first(); //you can echo this member of this set anywhere on the page
+   #$entry->data()->mailing_street1 something like this????
+   #echo "We have data here";  
+ } else {
+   #echo "We have no data for this user"; 
+ }
+?>
   
   
 

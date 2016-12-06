@@ -60,7 +60,28 @@
     $('[data-toggle="tooltip"]').tooltip(); 
   });
 </script>
+  
+  <?php
+    // $data = DB::getInstance()->get("enrollments", array('student_id', '=', "{$user->data()->student_id}"));
+    // if($data->count()){
+    //   foreach($data->results() as $datum){
+    //     $sections = DB::getInstance()->get("sections", array('crn', '=', "{$datum->course_id}"));
+    //     if($sections->count()){
+    //       foreach ($sections->results() as $section){
+    //         $courses = DB::getInstance()->get("courses", array('course_id', '=', "{$section->course_id}"));
+    //         echo $section->course_id;
+    //         echo $courses->count();
+    //         //echo $courses->results()->first()->course_id;
+    //       }
+    //     }    
+    //   }
+    // }
+  ?>
+
 <script>
+
+
+
 
   /*
   *
