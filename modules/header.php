@@ -10,7 +10,7 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Your Account</a>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="/updateAddress">Update Address</a>
+							<a class="dropdown-item" href="/updateAddresses">Update Address</a>
 							<a class="dropdown-item" href="/personalInfo">Personal Information</a>
 							<a class="dropdown-item" href="/holds">View Holds</a>
 						</div>

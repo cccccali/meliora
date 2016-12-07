@@ -16,6 +16,7 @@
       'required'=> true),
     'mailing_phone' => array(
       'required'=> true),
+
     'residential_street1' => array(
       'required'=> true),
     'residential_city' => array(
@@ -70,6 +71,7 @@
      $fields['mailing_country'] = input::get('mailing_country');
      $fields['mailing_email'] = input::get('mailing_email');
      $fields['mailing_phone'] = input::get('mailing_phone');
+
 
      $fields['residential_street1'] = input::get('residential_street1');
      $fields['residential_street2'] = input::get('residential_street2');
@@ -141,37 +143,35 @@
  }
  
  $data = DB::getInstance()->get("addresses", array('student_id', '=', "{$user->data()->student_id}")); //here is where we load any previously saved data from the database
- if($data->count()){
-  #what does this mean? count of the array?
-   $entry = $data->first(); //you can echo this member of this set anywhere on the page
-   #$entry->data()->mailing_street1 something like this????
-   #echo "We have data here";  
- } else {
-   #echo "We have no data for this user"; 
- }
-?>
-  
-  
-
-
+   if($data->count()){
+    #what does this mean? count of the array?
+     $entry = $data->first(); //you can echo this member of this set anywhere on the page
+     #$entry->data()->mailing_street1 something like this????
+     #echo "We have data here";  
+   } else {
+     #echo "We have no data for this user"; 
+   }
+ ?>
 
 <div class="col-md-12 homeLinks">
   <div class="row">
     <div class="col-md-5">
       <h1>Update Address</h1>
       <ul>
-        <li>Fields marked with  *  must be filled in before submitting form. </li>
+        <li class= "redMark">Fields marked with  *  must be filled in before submitting form. </li>
         <li>If any read-only fields are incorrect, please contact your school's Registrar.</li>
-        <li>International Students: Address updates must be reported within 10 days of any change.  For more information on these requirements, please visit the <a href="#"= >International Services Office</a>.</li>
+        <li>International Students: Address updates must be reported within 10 days of any change.  For more information on these requirements, please visit the <a href="http://www.iso.rochester.edu/"= >International Services Office</a>.</li>
       </ul>
-      <form method="post" action="#">
+      
+
+      <form action="#"  method="post">
 
         <div id = "wrap">
           <div id = "left_col">
 
         <h2> Mailing Address </h2>
         <div class="form-group">
-          <label for="street">Street1* </label>                                             
+          <labelfor="street">Street1</label><label class="redMark">*</label>                                          
           <input type="text" class="form-control" name="mailing_street1" value= "<?php echo $entry->mailing_street1?>" placeholder="500 Joseph C. Wilson Blvd" required>
         </div>
         <div class="form-group">
@@ -179,44 +179,65 @@
           <input type="text" class="form-control" name="mailing_street2" value= "<?php echo $entry->mailing_street2?>" placeholder="">
         </div>
         <div class="form-group">
-          <label for="city">City*</label>
+          <label for="city">City</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="mailing_city" value= "<?php echo $entry->mailing_city?>" placeholder="Rochester" required>
-          <label for="postal code">Postal Code*</label>
+          <label for="postal code">Postal Code</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="mailing_postal" value= "<?php echo $entry->mailing_postal?>" placeholder="14627" required>
         </div>
 
         <div class="form-group">
-          <label for = "country">Country</label>
-          <select name="mailing_country" class ="form-control"id="mailing_country" >
+          <label for = "country">Country: </label><label class="redMark">*</label> 
+          <select class = "form-control" name="mailing_country" id="mailing_country" required>
+          <!--option value="<?php //echo $entry->mailing_country?>"><?php //echo $entry->mailing_country?></option--> 
+          <option value= "">
+          
+          <?php 
+          if ($entry->mailing_country=="") {
+          echo "Select Country";
+          } else {
+          echo $entry->mailing_country;
+          }?> </option>
 
-          </select>
- 
         <script language = "javascript">
           populateCountries("mailing_country", "mailing_state");
         </script>
+          </select>
         </div>
+          
+          <div class="form-group">
+          <label for = "state">State: </label><label class="redMark">*</label> 
+          <!--label for = "country"><?php echo $entry->mailing_state?></label-->
+          <select class = "form-control" name="mailing_state" id="mailing_state" required>  
 
-        <div class="form-group">
-          <label for = "state">State</label>
-          <select name="mailing_state" id="mailing_state">
-            <option value= "<?php echo $entry->mailing_state?>" >Select State</option>
+         <option value= "">
+          <?php 
+          if ($entry->mailing_state=="") {
+            echo "Select Country";
+          } else {
+          echo $entry->mailing_state;
+          }?> </option>
+
+          <script language = "javascript">
+          populateCountries("mailing_state", "billing_state");
+          </script>
           </select>
         </div>
 
-   
-
 
         <div class="form-group">
-          <label for="email">Email*</label>
+          <label for="email">Email</label><label class="redMark">*</label> 
           <input type="email" class="form-control" name="mailing_email" value= "<?php echo $entry->mailing_email?>" placeholder="jane@u.rochester.edu" required>
         </div>
         <div class="form-group">
-          <label for="tel">Phone*</label>
+          <label for="tel">Phone</label><label class="redMark">*</label> 
           <input type="tel" class="form-control" name="mailing_phone" value= "<?php echo $entry->mailing_phone?>" placeholder="(###) ###-####" required>
         </div>
+        
+
+
         <h2> Residential Address at the University of Rochester </h2>
         <div class="form-group">
-          <label for="street">Street1* </label>
+          <label for="street">Street1</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="residential_street1" value= "<?php echo $entry->residential_street1?>"  placeholder="500 Joseph C. Wilson Blvd" required>
         </div>
         <div class="form-group">
@@ -228,31 +249,46 @@
           <input type="text" class="form-control" name="residential_building" value= "<?php echo $entry->residential_building?>"  placeholder="Riverview G">
         </div>
         <div class="form-group">
-          <label for="city">City*</label>
+          <label for="city">City</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="residential_city" value= "<?php echo $entry->residential_city?>" placeholder="Rochester" required>
-          <label for=""postal code"">Postal Code*</label>
+          <label for=""postal code"">Postal Code</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="residential_postal" value= "<?php echo $entry->residential_postal?>" placeholder="14627" required>
         </div>
-
+     
         <div class="form-group">
-          <label for = "country">Country</label>
-          <select name="residential_country" id="residential_country">
-            
-          </select>
-        <script language = "javascript">
+          <label for = "country">Country</label> 
+          <select name="residential_country" class="form-control" id="residential_country">
+          <option value= ""> 
+          
+           <?php 
+          if ($entry->residential_country=="") {
+            echo "Select Country";
+          } else {
+          echo $entry->residential_country;
+          }?> </option>
+
+          <script language = "javascript">
           populateCountries("residential_country", "residential_state");
         </script>
+          </select>
+       
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="residential_state" id="residential_state">
-            <option value= "<?php echo $entry->residential_state?>" >Select State</option>
+          <select name="residential_state" class="form-control" id="residential_state">
+            <option value= "">
+          <?php 
+          if ($entry->residential_state=="") {
+            echo "Select State";
+          } else {
+          echo $entry->residential_state;
+          }?> </option>
           </select>
-        </div>
 
+        </div>
         <div class="form-group">
-          <label for="tel">Preferred Phone*</label>
+          <label for="tel">Preferred Phone</label><label class="redMark">*</label> 
           <input type="tel" class="form-control" name="residential_phone" value= "<?php echo $entry->residential_phone?>" placeholder="(###) ###-####" required>
         </div>
 
@@ -277,24 +313,40 @@
           <input type="text" class="form-control" name="permanent_postal" value= "<?php echo $entry->permanent_postal?>" placeholder="14627">
         </div>
 
+
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="permanent_country" class="form-control" id="permanent_country">
-            
-          </select>
-        <script language = "javascript">
+          <select name="permanent_country" class = "form-control" id="permanent_country"> 
+     <option value= "">
+          
+           <?php 
+          if ($entry->permanent_country=="") {
+            echo "Select Country";
+          } else {
+          echo $entry->permanent_country;
+          }?> </option>
+
+          <script language = "javascript">
           populateCountries("permanent_country", "permanent_state");
         </script>
+          
+          </select>
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="permanent_state" class= "form-control" id="permanent_state">
-            <option value= "<?php echo $entry->permanent_state?>" >Select State</option>
+          <select name="permanent_state" class = "form-control" id="permanent_state">
+          <option value= ""> 
+          
+           <?php 
+          if ($entry->permanent_state=="") {
+            echo "Select State";
+          } else {
+          echo $entry->permanent_state;
+          }?> </option>
+
           </select>
         </div>
-
-
         <div class="form-group">
           <label for="tel">Phone</label>
           <input type="tel" class="form-control" name="permanent_phone" value= "<?php echo $entry->permanent_phone?>" placeholder="(###) ###-####">
@@ -317,18 +369,34 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="billing_country" id="billing_country">
-            
-          </select>
-        <script language = "javascript">
+          <select name="billing_country" class = "form-control" id="billing_country">
+         
+ <option value= "">
+          <?php 
+          if ($entry->billing_country=="") {
+            echo "Select Country";
+          } else {
+          echo $entry->billing_country;
+          }?> </option>
+
+          <script language = "javascript">
           populateCountries("billing_country", "billing_state");
-        </script>
+          </script>
+          </select>
+        
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="billing_state" id="billing_state">
-            <option value= "<?php echo $entry->billing_state?>" >Select State</option>
+          <select name="billing_state" class = "form-control" id="billing_state">
+  
+        <option value= "">
+             <?php 
+          if ($entry->billing_state=="") {
+            echo "Select State";
+          } else {
+          echo $entry->billing_state;
+          }?> </option>
           </select>
         </div>
 
@@ -360,18 +428,32 @@
 
         <div class="form-group">
           <label for = "country">Country</label>
-          <select name="foreign_country" id="foreign_country">
-            
-          </select>
-        <script language = "javascript">
+          <select name="foreign_country" class = "form-control" id="foreign_country">
+          <option value= "">
+          <?php 
+          if ($entry->foreign_country=="") {
+            echo "Select Country";
+          } else {
+          echo $entry->foreign_country;
+          }?> </option>
+
+          <script language = "javascript">
           populateCountries("foreign_country", "foreign_state");
         </script>
+          </select>
+        
         </div>
 
         <div class="form-group">
           <label for = "state">State</label>
-          <select name="foreign_state" class= "form-control" id="foreign_state">
-            <option value= "" ><?php echo $entry->foreign_state?></option>
+          <select name="foreign_state" class = "form-control" id="foreign_state">
+            <option value= "">
+          <?php 
+          if ($entry->foreign_state=="") {
+            echo "Select State";
+          } else {
+          echo $entry->foreign_state;
+          }?> </option>
           </select>
         </div>
 
@@ -383,18 +465,18 @@
  
         <h2>Emergency Contact Information</h2>
         <div class="form-group">
-          <label for="first name">First Name*</label>
+          <label for="first name">First Name</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="emergency_first" value= "<?php echo $entry->emergency_first?>" placeholder="Jane" required>
-          <label for="last name">Last Name*</label>
+          <label for="last name">Last Name</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="emergency_last" value= "<?php echo $entry->emergency_last?>" placeholder="Doe" required>
         </div>
         <div class="form-group">
-          <label for="relationship">Relationship*</label>
-          <select name="emergency_relationship" class= "form-control" required>
+          <label for="relationship">Relationship</label><label class="redMark">*</label> 
+          <select name="emergency_relationship" class = "form-control" required>
     
             <option value="" disabled selected>Please select one</option>
             <option value ="foreign mission staff" <?php if ($entry->emergency_relationship=="foreign mission staff") echo 'selected="selected"'?> >Foreign Mission Staff</option>
-            <option value="son or daughtor" <?php if ($entry->emergency_relationship=="son or daughtor") echo 'selected="selected"'?>>Son or Daughtor</option>
+            <option value="son or daughter" <?php if ($entry->emergency_relationship=="son or daughter") echo 'selected="selected"'?>>Son or Daughter</option>
             <option value="spouse"<?php if ($entry->emergency_relationship=="spouse") echo 'selected="selected"'?>>Spouse</option>
             <option value="relative"<?php if ($entry->emergency_relationship=="relative") echo 'selected="selected"'?>>Relative</option>
             <option value="parent"<?php if ($entry->emergency_relationship=="parent") echo 'selected="selected"'?>>Parent</option>
@@ -409,13 +491,13 @@
         </div>
         <div>
 
-          <label for="email">Email*</label>
+          <label for="email">Email</label><label class="redMark">*</label> 
           <input type="email" class="form-control" name="emergency_email" value= "<?php echo $entry->emergency_email?>"  placeholder="jane@u.rochester.edu" required>
         </div>
 
 
         <div class="form-group">
-          <label for="tel">Phone*</label>
+          <label for="tel">Phone</label><label class="redMark">*</label> 
           <input type="tel" class="form-control" name="emergency_phone" value= "<?php echo $entry->emergency_phone?>"  placeholder="(###) ###-####" required>
         </div>
         <h2> Other Contacts</h2>
@@ -428,11 +510,11 @@
         </div>
         <div class="form-group">
 
-          <label for="relationship">Relationship*</label>
-          <select name="other_relationship" required>
+          <label for="relationship">Relationship</label><label class="redMark">*</label> 
+          <select name="other_relationship" class = "form-control" required>
 
             <option value="" disabled selected>Please select one</option>
-            <option value="son or daughtor" <?php if ($entry->other_relationship=="son or daughtor") echo 'selected="selected"'?>>Son or Daughtor</option>
+            <option value="son or daughter" <?php if ($entry->other_relationship=="son or daughter") echo 'selected="selected"'?>>Son or Daughter</option>
             <option value="spouse"<?php if ($entry->other_relationship=="spouse") echo 'selected="selected"'?>>Spouse</option>
             <option value="relative"<?php if ($entry->other_relationship=="relative") echo 'selected="selected"'?>>Relative</option>
             <option value="parent"<?php if ($entry->other_relationship=="parent") echo 'selected="selected"'?>>Parent</option>
@@ -446,26 +528,26 @@
 
         </div>
         <div>
-          <label for="email">Email*</label>
+          <label for="email">Email</label><label class="redMark">*</label> 
           <input type="email" class="form-control" name="other_email" value= "<?php echo $entry->other_email?>" placeholder="jane@u.rochester.edu" required>
         </div>
         <div class="form-group">
-          <label for="tel">Phone*</label>
+          <label for="tel">Phone</label><label class="redMark">*</label> 
           <input type="tel" class="form-control" name="other_phone" value= "<?php echo $entry->other_phone?>" placeholder="(###) ###-####" required>
         </div>
         <h3> Local Contact </h3>
         <div class="form-group">
-          <label for="first name">First Name*</label>
+          <label for="first name">First Name</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="local_first" value= "<?php echo $entry->local_first?>" placeholder="Jane" required>
-          <label for="last name">Last Name*</label>
+          <label for="last name">Last Name</label><label class="redMark">*</label> 
           <input type="text" class="form-control" name="local_last" value= "<?php echo $entry->local_last?>" placeholder="Doe" required>
         </div>
         <div class="form-group">
-        <label for="relationship">Relationship*</label>
-          <select name="local_relationship" required>
+        <label for="relationship">Relationship</label><label class="redMark">*</label> 
+          <select name="local_relationship" class = "form-control" required>
             <option value="" disabled selected>Please select one</option>
             <option value ="foreign mission staff" <?php if ($entry->local_relationship=="foreign mission staff") echo 'selected="selected"'?> >Foreign Mission Staff</option>
-            <option value="son or daughtor" <?php if ($entry->local_relationship=="son or daughtor") echo 'selected="selected"'?>>Son or Daughtor</option>
+            <option value="son or daughter" <?php if ($entry->local_relationship=="son or daughter") echo 'selected="selected"'?>>Son or Daughter</option>
             <option value="spouse"<?php if ($entry->local_relationship=="spouse") echo 'selected="selected"'?>>Spouse</option>
             <option value="relative"<?php if ($entry->local_relationship=="relative") echo 'selected="selected"'?>>Relative</option>
             <option value="parent"<?php if ($entry->local_relationship=="parent") echo 'selected="selected"'?>>Parent</option>
@@ -475,22 +557,21 @@
             <option value="brother or sister"<?php if ($entry->local_relationship=="brother or sister") echo 'selected="selected"'?>>Brother or Sister</option>
             <option value="legal guardian"<?php if ($entry->local_relationship=="legal guardian") echo 'selected="selected"'?>>Legal Guardian</option>
             <option value="friend"<?php if ($entry->local_relationship=="friend") echo 'selected="selected"'?>>Friend</option>
-
           </select>
         </div>
         <div>
-          <label for="email">Email*</label>
+          <label for="email">Email</label><label class="redMark">*</label> 
           <input type="email" class="form-control" name="local_email" value= "<?php echo $entry->local_email?>" placeholder="jane@u.rochester.edu" required>
         </div>
         <div class="form-group">
-          <label for="tel">Phone*</label>
+          <label for="tel">Phone</label><label class="redMark">*</label> 
           <input type="tel" class="form-control" name="local_phone" value= "<?php echo $entry->local_phone?>" placeholder="(###) ###-####" required>
         </div>
 
         </div>
       </div>
 
-        <button type="submit" name="send-form" class="btn btn-default">Submit</button>
+      <button type="submit" name="send-form" class="btn btn-default">Submit</button> 
       </form>
     </div>
   </div>

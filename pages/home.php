@@ -8,7 +8,7 @@
 			<div class="row col-xs-12 m-t-1">
 				<div class="col-sm-6 col-xs-12 text-xs-center">
 
-					<a class="d-block" href="/updateAddress">Update Address</a>
+					<a class="d-block" href="/updateAddresses">Update Address</a>
 					<a class="d-block" href="/personalInfo"= >Personal Information</a>
 					<a class="d-block" href="/holds">View Holds</a>
 
