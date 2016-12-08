@@ -55,11 +55,10 @@
 </script>
 
 <script type="text/javascript">
-function register() {
+function register(crn) {
   console.log("Register pressed");
   $.ajax({
-      url: "../classes/addCourse.php",
-      data: {"crn": "49698"},
+      url: "../classes/addCourse.php?crn="+crn+"&id=<?php echo ($user->data()->student_id)?>",
       type: "POST",
       context: document.body,
       success: function( result ) {
@@ -82,6 +81,7 @@ function search() {
       type: "GET",
       context: document.body,
       success: function( result ) {
+        console.log(result);
         var data_array = $.parseJSON(result);          
         if (data_array[0] != null) {
           var trNode = document.createElement("tr");
@@ -108,7 +108,7 @@ function search() {
 
           var tdNode = document.createElement("td");
           var btn = document.createElement("BUTTON");
-          btn.onclick = function() { register(); };
+          btn.onclick = function() { register(data_array[5]); };
           var t = document.createTextNode("Add Course");
           btn.appendChild(t);
           tdNode.appendChild(btn);

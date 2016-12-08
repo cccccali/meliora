@@ -3,7 +3,7 @@ RewriteEngine On
 
 RewriteRule   ^home$ index.php?page=home [NC]
 RewriteRule   ^login$ index.php?page=login [NC]
-RewriteRule   ^registration$ index.php?page=registration
+RewriteRule   ^courseRegistration$ index.php?page=courseRegistration
 RewriteRule   ^updateAddress$ index.php?page=updateAddress
 RewriteRule   ^personalInfo$ index.php?page=personalInfo
 RewriteRule   ^viewSchedule$ index.php?page=viewSchedule

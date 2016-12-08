@@ -22,15 +22,17 @@ spl_autoload_register(function($class){
 
 $user = new user();
 
-$dataHold= DB::getInstance()->get("enrollments", array('student_id', '=', "{$user->data()->student_id}"));
-	if($dataHold == true) {
+$id = $_GET["id"];
+$temp = $_GET["crn"];
+$dataHold= DB::getInstance()->query("SELECT * FROM enrollments WHERE student_id = {$id} AND course_id = {$temp} LIMIT 10");//"enrollments", array('student_id', '=', "{$user->data()->student_id}"));
+	if($dataHold->count()>0) {
       echo "Succeeded";
-    } else {
-      $dataHold= DB::getInstance();
-      $temp = array();
-      $temp['student_id'] = $user->data()->student_id;
-      $temp['course_id'] = $_GET["crn"];
-      $didSucceed = $dataHold->insert("enrollments", $temp);
-      echo $didSucceed;
-    }
+  } else {
+    $dataHold= DB::getInstance();
+    //$temp = array();
+    //$temp['student_id'] = $user->data()->student_id;
+    //$temp['course_id'] = $_GET["crn"];
+    $didSucceed = $dataHold->query("INSERT INTO enrollments VALUES ('".$id."','".$temp."')");//`{$user->data()->student_id}`, `hello`)");
+    echo "SELECT * FROM enrollments WHERE student_id = {$id} AND course_id = {$temp} LIMIT 10";
+  }
 ?>
