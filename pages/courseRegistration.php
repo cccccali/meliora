@@ -30,31 +30,7 @@
 </div>
 
 <script type="text/javascript">
-  var events = [];
-  events[0] = [];
-  events[0][0] = "Tuesday";
-  events[0][1] = "3:00pm";
-  events[0][2] = "CSC 173"
-  events[0][3] = "#c0c0c0";
-  events[1] = [];
-  events[1][0] = "Monday";
-  events[1][1] = "12:00pm";
-  events[1][2] = "CSC 254"
-  events[1][3] = "#8FD8D8";
-  events[2] = [];
-  events[2][0] = "Thursday";
-  events[2][1] = "5:00pm";
-  events[2][2] = "PSY 219"
-  events[2][3] = "orange";
-  events[3] = [];
-  events[3][0] = "Thursday";
-  events[3][1] = "5:30pm";
-  events[3][2] = "CHI 221"
-  events[3][3] = "purple";
-  var prettyCal = new PrettyCalendar(events, "cal", false);
-</script>
 
-<script type="text/javascript">
 function register(crn) {
   console.log("Register pressed");
   $.ajax({
@@ -123,5 +99,76 @@ function search() {
     })
   }
 }
+
+var events = [];
+events[0] = [];
+$.ajax({
+    url: "../classes/enroll.php?",
+    type: "POST",
+    context: document.body,
+    success: function( result ) {
+      console.log(result);
+      $.ajax({
+        url: "../classes/apirequest.php",
+        data: {"string": encodeURIComponent(result), "index": 0},
+        type: "GET",
+        context: document.body,
+        success: function( result ) {
+          var data_array = $.parseJSON(result);
+          console.log(data_array);
+          if (data_array[0] != null) {
+            var trNode = document.createElement("tr");
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[0]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[1]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[2]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[3]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[4][0][1] + ", " + data_array[4][0][2]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            document.getElementById("results").appendChild(trNode);
+
+            var day = data_array[4][0][1];
+            var time = data_array[4][0][2];
+
+            for (var i = 0, len = day.length; i < len; i++) {
+              switch (day[i]) {
+                case "M":
+                  events[0][0] = "Monday";
+                case "T":
+                  events[0][0] = "Tuesday";
+                case "W":
+                  events[0][0] = "Wednesday";
+                case "R":
+                  events[0][0] = "Thursday";
+                case "F":
+                  events[0][0] = "Friday";
+                default:
+
+              }
+            }
+
+            events[0][1] = time.split("-")[0];
+            events[0][4] = time.split("-")[1];
+            events[0][3] = "orange";
+            events[0][2] = data_array[0];
+            var prettyCal = new PrettyCalendar(events, "cal", false);
+        };
+      }});
+    }});
+
 </script>
+
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
