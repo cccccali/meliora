@@ -9,58 +9,24 @@
         <tr>
           <th>Course ID</th>
           <th>Course</th>
-          <th> Professor</th>
+          <th>Department</th>
+          <th>Course Number</th>
           <th>Time</th>
-          <th>Location</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>00001</td>
-          <td>CSC170</td>
-          <td><a  href = "#" data-toggle= "tooltip" title="JohnD@u.rochester.edu">John Doe</a></td> <!--Add link for the professor at RateMyprofessor or Evaluation!-->
-          <td>MWF</td>
-          <td>CSB101</td>
-        </tr>
-        <tr>
-          <td>00001</td>
-          <td>CSC170</td>
-          <td><a  href = "#" data-toggle= "tooltip" title="JohnD@u.rochester.edu">John Doe</a></td> 
-          <td>MWF</td>
-          <td>CSB101</td>
-        </tr>
-        <tr>
-          <td>00001</td>
-          <td>CSC170</td>
-          <td><a  href = "#" data-toggle= "tooltip" title="JohnD@u.rochester.edu">John Doe</a></td> 
-          <td>MWF</td>
-          <td>CSB101</td>
-        </tr>
-        <tr>
-          <td>00001</td>
-          <td>CSC170</td>
-          <td><a  href = "#" data-toggle= "tooltip" title="JohnD@u.rochester.edu">John Doe</a></td> 
-          <td>MWF</td>
-          <td>CSB101</td>
-        </tr>
-        <tr>
-          <td>00001</td>
-          <td>CSC170</td>
-          <td><a  href = "#" data-toggle= "tooltip" title="JohnD@u.rochester.edu">John Doe</a></td> 
-          <td>MWF</td>
-          <td>CSB101</td>
-        </tr>
+      <tbody id="results">
       </tbody>
-    </table>  
+    </table>
   </div>
 </div>
 <script>
 //tooltip
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
   });
+
 </script>
-  
+
   <?php
     // $data = DB::getInstance()->get("enrollments", array('student_id', '=', "{$user->data()->student_id}"));
     // if($data->count()){
@@ -73,23 +39,53 @@
     //         echo $courses->count();
     //         //echo $courses->results()->first()->course_id;
     //       }
-    //     }    
+    //     }
     //   }
     // }
   ?>
 
 <script>
 
-
-
-
-  /*
-  *
-  * STANDARD EVENT ARRAY - ONE ARRAY WHICH CONTAINS INDIVIDUAL EVENT ARRAYS
-  * INDIVIDUAL EVENTS ARRAYS CONTAIN STRINGS W/ THE FOLLOWING:
-  * [dayOfWeek, standardTime, eventTitle, backgroundColor]
-  *
-  */
+$.ajax({
+    url: "../classes/enroll.php?",
+    type: "POST",
+    context: document.body,
+    success: function( result ) {
+      console.log(result);
+      $.ajax({
+        url: "../classes/apirequest.php",
+        data: {"string": encodeURIComponent(result), "index": 0},
+        type: "GET",
+        context: document.body,
+        success: function( result ) {
+          var data_array = $.parseJSON(result);
+          console.log(data_array);
+          if (data_array[0] != null) {
+            var trNode = document.createElement("tr");
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[0]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[1]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[2]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[3]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            var tdNode = document.createElement("td");
+            var textnode = document.createTextNode(data_array[4][0][1] + ", " + data_array[4][0][2]);
+            tdNode.appendChild(textnode);
+            trNode.appendChild(tdNode);
+            document.getElementById("results").appendChild(trNode);
+        };
+      }});
+    }});
 
   var events = [];
   events[0] = [];

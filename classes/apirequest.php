@@ -9,7 +9,7 @@
 	$dept = $array['20171'][$i]['dept'];
 	$num = $array['20171'][$i]['num'];
 	$id = $array['20171'][$i]['id'];
-	$sections = "";
+	$sections = array();
 
 	foreach ($array['20171'][$i]['sections'] as $section) {
 		array_push($sections, array($section['id'], $section['days'], $section['prettyTime']));
