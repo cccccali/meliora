@@ -7,8 +7,8 @@
     <table class = "table table-striped">
       <thead>
         <tr>
-          <th>Course ID</th>
           <th>Course</th>
+          <th>Description</th>
           <th>Department</th>
           <th>Course Number</th>
           <th>Time</th>
@@ -53,6 +53,8 @@
 
 <script>
 
+var events = [];
+events[0] = [];
 $.ajax({
     url: "../classes/enroll.php?",
     type: "POST",
@@ -90,31 +92,34 @@ $.ajax({
             tdNode.appendChild(textnode);
             trNode.appendChild(tdNode);
             document.getElementById("results").appendChild(trNode);
+
+            var day = data_array[4][0][1];
+            var time = data_array[4][0][2];
+
+            for (var i = 0, len = day.length; i < len; i++) {
+              switch (day[i]) {
+                case "M":
+                  events[0][0] = "Monday";
+                case "T":
+                  events[0][0] = "Tuesday";
+                case "W":
+                  events[0][0] = "Wednesday";
+                case "R":
+                  events[0][0] = "Thursday";
+                case "F":
+                  events[0][0] = "Friday";
+                default:
+
+              }
+            }
+
+            events[0][1] = time.split("-")[0];
+            events[0][4] = time.split("-")[1];
+            events[0][3] = "orange";
+            events[0][2] = data_array[0];
+            var prettyCal = new PrettyCalendar(events, "cal", false);
         };
       }});
     }});
 
-  var events = [];
-  events[0] = [];
-  events[0][0] = "Wednesday";
-  events[0][1] = "1500";
-  events[0][2] = "CSC170";
-  events[0][3] = "orange";
-  events[0][4] = "1830";
-  events[0][5] = "CSB101";
-  events[1] = [];
-  events[1][0] = "Monday";
-  events[1][1] = "1500";
-  events[1][2] = "CSC170";
-  events[1][3] = "orange";
-  events[1][4] = "1830";
-  events[1][5] = "CSB101";
-  events[2] = [];
-  events[2][0] = "Friday";
-  events[2][1] = "1500";
-  events[2][2] = "CSC170";
-  events[2][3] = "orange";
-  events[2][4] = "1830";
-  events[2][5] = "CSB101";
-  var prettyCal = new PrettyCalendar(events, "cal", false);
 </script>
