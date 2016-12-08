@@ -1,8 +1,8 @@
-<?php 
+<?php
 	$url = "http://www.skedgeur.com/api/courses/?q=" . htmlspecialchars($_GET["string"], ENT_QUOTES, 'UTF-8') . "&sections=1";
 	$response = file_get_contents($url);
 	$array = json_decode($response, true);
-	
+
 	$i = $_GET["index"];
 	$title = $array['20171'][$i]['title'];
 	$description = $array['20171'][$i]['description'];
@@ -12,7 +12,7 @@
 	$sections = "";
 
 	foreach ($array['20171'][$i]['sections'] as $section) {
-		$sections = $sections . $section['days'] . " " .  $section['prettyTime'] . "\n";
+		array_push($sections, array($section['id'], $section['days'], $section['prettyTime']));
 	}
 
 	$result = array($title, $description, $dept, $num, $sections, $id);

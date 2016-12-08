@@ -9,8 +9,8 @@
           <label for="formGroupExampleInput">Search</label>
           <input type="text" class="form-control" id="form" placeholder="CSC 173">
         </div>
-      </form> 
-      <input type="button" id="searchButton" onclick="search()" value="Submit"/> 
+      </form>
+      <input type="button" id="searchButton" onclick="search()" value="Submit"/>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -25,7 +25,7 @@
       <tbody id="results">
       <!-- Gets edited here -->
       </tbody>
-    </table>  
+    </table>
   </div>
 </div>
 
@@ -34,22 +34,22 @@
   events[0] = [];
   events[0][0] = "Tuesday";
   events[0][1] = "3:00pm";
-  events[0][2] = "Just a sample event"
+  events[0][2] = "CSC 173"
   events[0][3] = "#c0c0c0";
   events[1] = [];
   events[1][0] = "Monday";
   events[1][1] = "12:00pm";
-  events[1][2] = "Another event"
+  events[1][2] = "CSC 254"
   events[1][3] = "#8FD8D8";
   events[2] = [];
   events[2][0] = "Thursday";
   events[2][1] = "5:00pm";
-  events[2][2] = "This is what happens when"
+  events[2][2] = "PSY 219"
   events[2][3] = "orange";
   events[3] = [];
   events[3][0] = "Thursday";
   events[3][1] = "5:30pm";
-  events[3][2] = "two events are side by side"
+  events[3][2] = "CHI 221"
   events[3][3] = "purple";
   var prettyCal = new PrettyCalendar(events, "cal", false);
 </script>
@@ -66,7 +66,7 @@ function register(crn) {
   }});
 }
 
-function search() { 
+function search() {
   var node = document.getElementById("results");
   while (node.hasChildNodes()) {
     node.removeChild(node.lastChild);
@@ -81,8 +81,7 @@ function search() {
       type: "GET",
       context: document.body,
       success: function( result ) {
-        console.log(result);
-        var data_array = $.parseJSON(result);          
+        var data_array = $.parseJSON(result);
         if (data_array[0] != null) {
           var trNode = document.createElement("tr");
           var tdNode = document.createElement("td");
@@ -106,13 +105,16 @@ function search() {
           tdNode.appendChild(textnode);
           trNode.appendChild(tdNode);
 
-          var tdNode = document.createElement("td");
-          var btn = document.createElement("BUTTON");
-          btn.onclick = function() { register(data_array[5]); };
-          var t = document.createTextNode("Add Course");
-          btn.appendChild(t);
-          tdNode.appendChild(btn);
-          trNode.appendChild(tdNode);
+          for (i = 0; i < data_array[4].length; i++) {
+            var string = "Add Course" + "\n #" + data_array[4][0][0];
+            var tdNode = document.createElement("td");
+            var btn = document.createElement("BUTTON");
+            btn.onclick = function() { register(); };
+            var t = document.createTextNode(string);
+            btn.appendChild(t);
+            tdNode.appendChild(btn);
+            trNode.appendChild(tdNode);
+          }
 
           document.getElementById("results").appendChild(trNode);
 
@@ -123,4 +125,3 @@ function search() {
 }
 </script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-      
